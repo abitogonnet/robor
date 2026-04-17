@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: abito-whatsapp-bot
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: RENDER_PUBLIC_DB_URL
+        sync: false
+      - key: RENDER_INTERNAL_DB_URL
+        sync: false
+      - key: RENDER_PUBLIC_CATALOG_TABLE
+        value: catalog
+        sync: false
+      - key: RENDER_PUBLIC_VISIT_TABLE
+        value: visitas_visita
+        sync: false
+      - key: RENDER_INTERNAL_RETURNS_TABLE
+        value: returns
+        sync: false
